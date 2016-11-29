@@ -22,10 +22,14 @@
     * A installer dans : C:\Nunit (n'accepte pas les dossiers du type « C:\Program Files (x86) »)
     * Utiliser la même version que dans Visual Studio (avec Nunit TestAdapter 2.0)
 
-* MsBuild
+* MsBuild v2015
     * Utiliser la version dans : C:\Program Files (x86)\MSBuild\14.0\Bin\
         * Version installée par Visual Studio 2015 ?
-    * Comportement différent avec C:\Windows\Microsoft.NET\Framework64\v4.0.30319
+        * Comportement différent avec C:\Windows\Microsoft.NET\Framework64\v4.0.30319
+    * Téléchargement des MSBuild Tools (BuildTools_Full.exe) : [https://www.microsoft.com/fr-FR/download/details.aspx?id=48159](https://www.microsoft.com/fr-FR/download/details.aspx?id=48159)
+
+* Git for Windows v2.10.2
+    * Téléchargement : [https://git-for-windows.github.io/](https://git-for-windows.github.io/)
 
 ## Plugins Jenkins à installer
 
