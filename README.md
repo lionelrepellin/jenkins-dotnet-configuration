@@ -55,7 +55,7 @@
 
 * Saisir l'adresse email de l’administrateur (personne à qui sera envoyé les mails d’échecs de builds)
 
-## Supprimer les balises targets / imports dans tous les .csproj via script PowerShell
+## Supprimer les balises targets / imports dans tous les .csproj
 
 * Téléchargement : [https://github.com/owen2/AutomaticPackageRestoreMigrationScript](https://github.com/owen2/AutomaticPackageRestoreMigrationScript)
 * Ouvrir PowerShell en tant qu'Admin puis taper la ligne ci-dessous et répondre Oui ou Tout à la question qui s'affiche : 
