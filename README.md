@@ -35,6 +35,9 @@
     * Utiliser la version fournie avec VS dans : C:\Program Files (x86)\MSBuild\14.0\Bin\
     * Comportement différent avec C:\Windows\Microsoft.NET\Framework64\v4.0.30319
 
+* Git for Windows v2.10.2
+    * Téléchargement : [https://git-for-windows.github.io/](https://git-for-windows.github.io/)
+
 ## Plugins Jenkins à installer
 
 * MSBuild
