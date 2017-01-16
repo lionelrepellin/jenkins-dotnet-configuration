@@ -59,6 +59,7 @@
 * Task Scanner Plug-in => parcours le code et liste les TODO
 * thinBackup => sauvegarde / restauration de config
 * Cobertura Plugin => affichage du rapport
+* SonarQube Plugin => analyse de code
 * HTML Publisher plugin => 
 
 
