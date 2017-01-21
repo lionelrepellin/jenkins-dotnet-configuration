@@ -113,12 +113,14 @@ Les arguments de la ligne de commande :
 
     * Revoir peut-être la verbosity => /v:m
     
-* En aval de la phase de build : exécution des tests via la ligne de commande bacth :
+* En aval de la phase de build, exécution des tests via la ligne de commande bacth :
 
 ```
-%NUNIT% "%WORKSPACE%\project\bin\Release\test.dll" /xml=Results.xml
-EXIT /B %%EXITCODE%%
+%NUNIT% "%WORKSPACE%\project\bin\Release\test.dll" --result=TestsDlls.xml;format=nunit2 --labels=All
+exit /b %ERRORLEVEL%
 ```
+
+Bien respecter le format 'nunit2' pour leur interprétation dans Jenkins.
 
 ## Etapes post build
 
