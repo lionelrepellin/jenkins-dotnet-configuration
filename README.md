@@ -111,7 +111,7 @@ Les arguments de la ligne de commande :
 /v:m /t:Clean,Build /p:Configuration=Release /p:Platform="Any CPU"
 ```
 
-    * Revoir peut-être la verbosity => /v:m
+*Adapter la verbosity au goût de chacun : /v:m*
     
 * En aval de la phase de build, exécution des tests via la ligne de commande bacth :
 
@@ -153,7 +153,7 @@ sonar.jdbc.username=LOGIN
 sonar.jdbc.password=PASSWORD
 ```
 
-    * la chaîne de connexion en utilisant l'authentification SQL Server (ici une Bdd SQLEXPRESS est utilisée) :
+* la chaîne de connexion en utilisant l'authentification SQL Server (ici une Bdd SQLEXPRESS est utilisée) :
 ```
 sonar.jdbc.url=jdbc:sqlserver://localhost\\SQLEXPRESS;databaseName=sonarqube;language=english
 ```
@@ -186,3 +186,18 @@ sonar.jdbc.url=jdbc:sqlserver://localhost\\SQLEXPRESS;databaseName=sonarqube;lan
     * pour chaque job, entourer les étapes de build (MSBuild) d'une étape "Préparer une analyse SonarQube Scanner pour MSBuild" et terminer par une étape "Terminer une analyse SonarQube Scanner pour MSBuild"
     * dans l'étape de préparation, renseigner la clé du projet (voir l'étape de création du projet dans SonarQube) et son nom ainsi qu'un numéro version (1.0 fera l'affaire)
     * lancer enfin un build du Job Jenkins et les badges SonarQube apparaitront dans le rapport
+
+* Exclusion des sous-projets :
+    * afin de ne pas polluer l'analyse d'un projet par tous les sous-projets qui le compose, il y a 3 possibilités pour les exclure :
+        * configurer le projet dans SonarQube en rajoutant un pattern d'exclusion de la forme: ``` **/projetA/*/*.* ```
+        * il est également possible d'ajouter ce même pattern dans le .csproj du projet principal
+        * et enfin, rajouter un attribut SonarQubeExclude dans le .csproj de chaque sous-projet
+    * après de nombreux tests infructueux avec les 2 premières méthodes, j'ai donc opté pour la dernière solution et j'ai réalisé un petit programme qui se charge de parcourir tous les sous-projets (et même leurs sous-projets) d'un projet, de façon récursive, pour leur ajouter cet attribut. Les sources et la documentation se trouvent ici : 
+    [https://github.com/lionelrepellin/sonarqube-scanner-project-excluder](https://github.com/lionelrepellin/sonarqube-scanner-project-excluder)
+    * voici les opérations que j'exécute dans le job Jenkins (attention: la configuration est un peu particulière => 1 solution, 60 projets environ, 1 seul workspace) : 
+        1. syncrhonisation avec le SCM
+        2. exécution du programme mentionné ci-dessus
+        3. préparation de l'analyse SonarQube
+        4. build du projet
+        5. fin de l'analyse SonarQube
+        6. revert des .csproj modifiés
