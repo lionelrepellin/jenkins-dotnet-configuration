@@ -51,16 +51,17 @@
     * Télécharger : [https://catlight.io/](https://catlight.io/)
     * A installer sur les postes des développeurs pour monitorer l'état des jobs
 
+* Slack
+    * CatLight a finalement été abandonné au profit de Slack pour être notifié des builds "failed" et "back to normal" 
 
 ## Plugins Jenkins à installer
 
-* MSBuild Plugin => build les solutions / projets
-* NUnit plugin => exécution des tests unitaires
-* Task Scanner Plug-in => parcours le code et liste les TODO
-* thinBackup => sauvegarde / restauration de config
-* Cobertura Plugin => affichage du rapport
-* SonarQube Plugin => analyse de code
-* HTML Publisher plugin => 
+* MSBuild Plugin (build les solutions / projets)
+* NUnit plugin (affichage du rapport de tests unitaires)
+* Task Scanner Plug-in (parcours le code et liste les TODO, FIXME, etc)
+* thinBackup (sauvegarde / restauration de config)
+* SonarQube Plugin (analyse qualité)
+* Slack Notification Plugin
 
 
 ## Variables d’environnement à définir
