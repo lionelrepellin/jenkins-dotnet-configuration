@@ -164,6 +164,18 @@ sonar.jdbc.url=jdbc:sqlserver://localhost\\SQLEXPRESS;databaseName=sonarqube;lan
     * et lancer : StartSonar.bat
     * on peut ensuite se connecter avec le compte admin (login: admin/ pwd: admin) sur: http://localhost:9000
 
+
+### Mise à jour de SonarQube en 6.4
+
+* Lister les plugins déjà installés, la mise à jour ne conserve pas les plugins :/
+* Arrêter le services puis le désinstaller via les batch prévus à cet effet : **StopNTService.bat**  et **UninstallNTService.bat**
+* Renommer le dossier c:\sonarqube en c:\old_sonarqube par exemple
+* Télécharger puis dézipper la nouvelle version dans c:\sonarqube
+* Fusionner les modifications portant sur la configuration dans **sonar.properties** (vu ci-dessus)
+* Installer et démarrer le service avec les batch : **InstallNTService.bat** et **StartNTService.bat**
+* Aller sur SonarQube via son navigateur : http://yourSonarQubeServerURL/setup
+* Et enfin, réinstaller les plugins
+
 ## Configurer Jenkins et SonarQube
 
 * SonarQube :
